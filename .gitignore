@@ -147,3 +147,26 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+/Cinematron/__init__.py
+/Scripts/activate
+/Scripts/activate.bat
+/Scripts/Activate.ps1
+/ChatBot/const.py
+/Scripts/deactivate.bat
+/Scripts/django-admin.exe
+/Scripts/django-admin.py
+/Scripts/pip.exe
+/Scripts/pip3.6.exe
+/Scripts/pip3.exe
+/Scripts/python.exe
+/Scripts/python3.dll
+/Scripts/python36.dll
+/Scripts/pythonw.exe
+/pyvenv.cfg
+/Scripts/sqlformat.exe
+/Scripts/sqlite3.dll
+/Scripts/tcl86t.dll
+/Scripts/tk86t.dll
+/Scripts/vcruntime140.dll
+/CinemaApp/__init__.py
+/CinemaApp/migrations/__init__.py

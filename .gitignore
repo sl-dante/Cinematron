@@ -170,3 +170,5 @@ cython_debug/
 /Scripts/vcruntime140.dll
 /CinemaApp/__init__.py
 /CinemaApp/migrations/__init__.py
+/CinemaApp/migrations/0001_initial.py
+/Scripts/normalizer.exe

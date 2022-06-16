@@ -5,23 +5,10 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import random
 import requests
+from ChatBot.ClassFilm import Film
 
 conn = sqlite3.connect("../db.sqlite3")
 cursor = conn.cursor()
-
-
-# Класс для удобной структуризации информации, которую спарсили
-class Film:
-    def __init__(self, _name, _description, _photo, _href, _main_actor, _year, _country, _genre, _directed):
-        self.name = _name
-        self.description = _description
-        self.photo = _photo
-        self.href = _href
-        self.main_actor = _main_actor
-        self.year = _year
-        self.country = _country
-        self.genre = _genre
-        self.directed = _directed
 
 
 def fill_db_with_parser(url_data_films):
@@ -117,5 +104,4 @@ def fill_db_with_parser(url_data_films):
 
 if __name__ == '__main__':
     # Невошедшие жанры
-    urls_genre_film = ['top100-drama/', 'top100-anime/''top100-crime/', 'top100-romance/', 'top100-musical/',
-                       'top100-fantasy/', 'top100-horror/', ]
+    urls_genre_film = ['top100-anime/', ]

@@ -3,9 +3,11 @@ import urllib.request
 from vk_api.bot_longpoll import VkBotEventType, VkBotLongPoll
 from vk_api.utils import get_random_id
 import const
-from ChatBot.parser import parse_cinema_info
+
 from ChatBot.keyboards import *
 from ChatBot.common_methods import *
+from ChatBot.poster_parser import get_posters
+from ChatBot.query import select_film
 
 vk_session = vk_api.VkApi(token=const.token)
 vk = vk_session.get_api()
@@ -45,6 +47,27 @@ for event in longPoll.listen():
                     message="Выбери жанр",
                     keyboard=encode_keyboard_for_vk(keyboard_for_films))
 
+        if event.obj.text.lower() == 'афиша':
+
+            if event.from_user:
+                vk.messages.send(
+                    user_id=event.obj.from_id,
+                    random_id=get_random_id(),
+                    message='Подождите, Афиша уже готовится))',
+                    keyboard=encode_keyboard_for_vk(keyboard_for_back),
+                )
+
+            films = get_posters('https://krsk.kinoluch.ru/poster')
+
+            for film in films:
+                if film.data is None:
+                    if event.from_user:
+                        vk.messages.send(
+                            user_id=event.obj.from_id,
+                            random_id=get_random_id(),
+                            message=f'Название: {film.name[0]}\n\n{film.description}',
+                            attachment=load_photo(film, upload=upload))
+
         if event.obj.text.lower() == 'вернуться в главное меню':
             if event.from_user:
                 vk.messages.send(
@@ -54,152 +77,152 @@ for event in longPoll.listen():
                     keyboard=encode_keyboard_for_vk(main_menu_keyboard))
 
         if event.obj.text.lower() == 'комедия':
-            film = parse_cinema_info('top100-comedy/')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'мультфильм':
-            film = parse_cinema_info('mult_top100/')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'триллер':
-            film = parse_cinema_info('top100-thriller/')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'фантастика':
-            film = parse_cinema_info('top100-sci-fi')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'аниме':
-            film = parse_cinema_info('top100-anime')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'боевик':
-            film = parse_cinema_info('top100-action')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'вестерн':
-            film = parse_cinema_info('top100-western/')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'военный':
-            film = parse_cinema_info('top100-war/')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'детектив':
-            film = parse_cinema_info('top100-detective/')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'драма':
-            film = parse_cinema_info('top100-drama/')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'криминал':
-            film = parse_cinema_info('top100-crime')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'мелодрама':
-            film = parse_cinema_info('top100-romance')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'мюзикл':
-            film = parse_cinema_info('top100-musical')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'фэнтези':
-            film = parse_cinema_info('top100-fantasy')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'ужасы':
-            film = parse_cinema_info('top100-horror/')
+            film = select_film(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name[0]}\n\n{film.description}',
+                    message=f'Название: {film.name}\n\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -220,36 +243,15 @@ for event in longPoll.listen():
 
                 if flag_for_es is True:
                     list_for_answer.append(event.obj.text.lower())
-"""
+
                 if event.obj.text.lower() == 'продолжить':
                     flag_for_es = False
                     _info = list_for_answer[1].split(',')
-                    film = parse_cinema_info(main_es(_info))
-                    if event.from_user:
-                        vk.messages.send(
-                            user_id=event.obj.from_id,
-                            random_id=get_random_id(),
-                            message=f'Название: {film.name[0]}\n\n{film.description}',
-                            keyboard=keyboard_for_request,
-                            attachment=load_photo(film))
-
-                if event.obj.text.lower() == 'афиша':
-                    films = get_posters('https://krsk.kinoluch.ru/poster')
 
                     if event.from_user:
                         vk.messages.send(
                             user_id=event.obj.from_id,
                             random_id=get_random_id(),
-                            message='Подождите, Афиша уже готовится))',
-                            keyboard=encode_keyboard_for_vk(keyboard_for_back),
-                        )
-
-                    for i in films:
-                        if i.data == None:
-                            if event.from_user:
-                                vk.messages.send(
-                                    user_id=event.obj.from_id,
-                                    random_id=get_random_id(),
-                                    message=f'Название: {i.name[0]}\n\n{i.description}',
-                                    attachment=load_photo(i)
-                                )"""
+                            message=f'\nНазвание: {film.name[0]}\n\n{film.description}',
+                            keyboard=encode_keyboard_for_vk(keyboard_for_expert_system),
+                            attachment=load_photo(film, upload=upload))

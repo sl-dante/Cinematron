@@ -17,7 +17,6 @@ vk = vk_session.get_api()
 upload = vk_api.VkUpload(vk_session)
 longPoll = VkBotLongPoll(vk_session, group_id=const.group_id)
 count_for_answer = 0
-list_for_answer = []
 
 flag_for_es = False
 
@@ -86,7 +85,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -96,7 +101,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -106,7 +117,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -116,19 +133,24 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
         if event.obj.text.lower() == 'аниме':
-            film = select_film_by_genre_name(event.obj.text.capitalize())
             if event.from_user:
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
-                    keyboard=encode_keyboard_for_vk(keyboard_for_films),
-                    attachment=load_photo(film, upload=upload))
+                    message=f'Аниме вредит вашему здоровью, поэтому создатель чат-бота'
+                            f'не рекомендует его смотреть :)',
+                    keyboard=encode_keyboard_for_vk(keyboard_for_films))
 
         if event.obj.text.lower() == 'боевик':
             film = select_film_by_genre_name(event.obj.text.capitalize())
@@ -136,7 +158,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -146,7 +174,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -156,7 +190,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -166,7 +206,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -176,7 +222,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -186,7 +238,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -196,7 +254,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -206,7 +270,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -216,7 +286,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -226,7 +302,13 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message=f'Название: {film.name}\n\n{film.description}',
+                    message=f'Название: {film.name}'
+                            f'\nЖанр: {film.genre}'
+                            f'\nРежиссёр: {film.directed}'
+                            f'\nВ главной роли: {film.main_actor}'
+                            f'\nСтрана: {film.country}'
+                            f'\nГод: {film.year}'
+                            f'\nОписание:\n{film.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_films),
                     attachment=load_photo(film, upload=upload))
 
@@ -251,7 +333,13 @@ for event in longPoll.listen():
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
                     message=f'Сейчас попробую!\n'
-                            f'\nНазвание: {film_genre.name}\nЖанр:{film_genre.genre}\n{film_genre.description}',
+                            f'Название: {film_genre.name}'
+                            f'\nЖанр: {film_genre.genre}'
+                            f'\nРежиссёр: {film_genre.directed}'
+                            f'\nВ главной роли: {film_genre.main_actor}'
+                            f'\nСтрана: {film_genre.country}'
+                            f'\nГод: {film_genre.year}'
+                            f'\nОписание:\n{film_genre.description}',
                     keyboard=encode_keyboard_for_vk(keyboard_for_choice_film),
                     attachment=load_photo(film_genre, upload=upload))
 
@@ -263,7 +351,13 @@ for event in longPoll.listen():
                         vk.messages.send(
                             user_id=_event.obj.from_id,
                             random_id=get_random_id(),
-                            message=f'\nНазвание: {film.name}\nЖанр:{film.genre}\n{film.description}',
+                            message=f'Название: {film.name}'
+                                    f'\nЖанр: {film.genre}'
+                                    f'\nРежиссёр: {film.directed}'
+                                    f'\nВ главной роли: {film.main_actor}'
+                                    f'\nСтрана: {film.country}'
+                                    f'\nГод: {film.year}'
+                                    f'\nОписание:\n{film.description}',
                             keyboard=encode_keyboard_for_vk(keyboard_for_choice_film),
                             attachment=load_photo(film, upload=upload))
 
@@ -280,7 +374,13 @@ for event in longPoll.listen():
                         vk.messages.send(
                             user_id=_event.obj.from_id,
                             random_id=get_random_id(),
-                            message=f'\nНазвание: {film.name}\nЖанр:{film.genre}\n{film.description}',
+                            message=f'Название: {film.name}'
+                                    f'\nЖанр: {film.genre}'
+                                    f'\nРежиссёр: {film.directed}'
+                                    f'\nВ главной роли: {film.main_actor}'
+                                    f'\nСтрана: {film.country}'
+                                    f'\nГод: {film.year}'
+                                    f'\nОписание:\n{film.description}',
                             keyboard=encode_keyboard_for_vk(keyboard_for_choice_film),
                             attachment=load_photo(film, upload=upload))
 
@@ -310,82 +410,106 @@ for event in longPoll.listen():
                 vk.messages.send(
                     user_id=event.obj.from_id,
                     random_id=get_random_id(),
-                    message='Давай подберём!\nОтветь на следующие вопросы либо "Да", либо "Нет"\n'
-                            '1. Ты любишь картины, во время просмотра которых необходимо поразмыслить?\n'
-                            '2. Ты любишь веселые, ненапряжные, смешные фильмы?\n'
-                            '3. По твоему мнению любовные линии в фильме - это его основа?\n'
-                            '4. Любишь понервничать во время просмотра?\n'
-                            '5. А драконов ты любишь? Или любых других вымышленых персонажей?\n'
-                            '6. Хочешь насладиться драйвом, погонями и драками?',
+                    message='Давай подберём!\n'
+                            'Нажми кнопку "Начать!", как будешь готов к опросу',
                     keyboard=encode_keyboard_for_vk(keyboard_for_polls))
 
-            for _event in longPoll.listen():
-                if _event.type == VkBotEventType.MESSAGE_NEW:
-                    flag_for_es = False
-                    list_for_answer.append(_event.obj.text.lower())
+            if flag_for_es is True:
+                flag_for_es = False
+                for _event in longPoll.listen():
+                    list_for_answer = list()
+                    if _event.type == VkBotEventType.MESSAGE_NEW:
+                        if _event.obj.text.lower() == 'начать!':
+                            for question in const.QuestionListForQuiz:
+                                vk.messages.send(
+                                    user_id=_event.obj.from_id,
+                                    random_id=get_random_id(),
+                                    message=f'{question}',
+                                    keyboard=encode_keyboard_for_vk(keyboard_for_answer), )
 
-                    if _event.obj.text.lower() == 'продолжить':
-                        finally_genre_film = ''
-                        list_genres = set()
-                        count = 0
-                        _answer = list_for_answer[0].split(',')
-                        _genre = genre_calculate(_answer)
-                        list_genres.add(_genre)
-                        finally_genre_film = _genre
-                        film = select_film_by_genre_name(_genre)
+                                for _ev in longPoll.listen():
+                                    if _ev.type == VkBotEventType.MESSAGE_NEW:
+                                        if _ev.from_user:
+                                            list_for_answer.append(_ev.obj.text.lower())
+                                            break
 
-                        if _event.from_user:
-                            vk.messages.send(
-                                user_id=_event.obj.from_id,
-                                random_id=get_random_id(),
-                                message=f'\nНазвание: {film.name}\nЖанр:{film.genre}\n{film.description}',
-                                keyboard=encode_keyboard_for_vk(keyboard_for_choice_film),
-                                attachment=load_photo(film, upload=upload))
+                            list_genres = set()
+                            count = 0
+                            _genre = genre_calculate(list_for_answer)
+                            list_genres.add(_genre)
+                            finally_genre_film = _genre
+                            film = select_film_by_genre_name(_genre)
 
-                    if _event.obj.text.lower() == 'выбери другой' and count < 3:
-                        count += 1
-                        film = select_film_by_genre_name(_genre)
-                        if _event.from_user:
-                            vk.messages.send(
-                                user_id=_event.obj.from_id,
-                                random_id=get_random_id(),
-                                message=f'\nНазвание: {film.name}\nЖанр:{film.genre}\n{film.description}',
-                                keyboard=encode_keyboard_for_vk(keyboard_for_choice_film),
-                                attachment=load_photo(film, upload=upload))
+                            if _event.from_user:
+                                vk.messages.send(
+                                    user_id=_event.obj.from_id,
+                                    random_id=get_random_id(),
+                                    message=f'Название: {film.name}'
+                                            f'\nЖанр: {film.genre}'
+                                            f'\nРежиссёр: {film.directed}'
+                                            f'\nВ главной роли: {film.main_actor}'
+                                            f'\nСтрана: {film.country}'
+                                            f'\nГод: {film.year}'
+                                            f'\nОписание:\n{film.description}',
+                                    keyboard=encode_keyboard_for_vk(keyboard_for_choice_film),
+                                    attachment=load_photo(film, upload=upload))
 
-                    if _event.obj.text.lower() == 'выбери другой' and count >= 3:
-                        count += 1
-                        ids_genre = select_sim_film(_genre)
-                        for _id in ids_genre:
-                            list_genres.add(select_genre_by_id(_id))
-                        name_genre = random.choice(list(list_genres))
-                        film = select_film_by_genre_name(name_genre)
-                        finally_genre_film = name_genre
+                        if _event.obj.text.lower() == 'выбери другой' and count < 3:
+                            count += 1
+                            film = select_film_by_genre_name(_genre)
+                            if _event.from_user:
+                                vk.messages.send(
+                                    user_id=_event.obj.from_id,
+                                    random_id=get_random_id(),
+                                    message=f'Название: {film.name}'
+                                            f'\nЖанр: {film.genre}'
+                                            f'\nРежиссёр: {film.directed}'
+                                            f'\nВ главной роли: {film.main_actor}'
+                                            f'\nСтрана: {film.country}'
+                                            f'\nГод: {film.year}'
+                                            f'\nОписание:\n{film.description}',
+                                    keyboard=encode_keyboard_for_vk(keyboard_for_choice_film),
+                                    attachment=load_photo(film, upload=upload))
 
-                        if _event.from_user:
-                            vk.messages.send(
-                                user_id=_event.obj.from_id,
-                                random_id=get_random_id(),
-                                message=f'\nНазвание: {film.name}\nЖанр:{film.genre}\n{film.description}',
-                                keyboard=encode_keyboard_for_vk(keyboard_for_choice_film),
-                                attachment=load_photo(film, upload=upload))
+                        if _event.obj.text.lower() == 'выбери другой' and count >= 3:
+                            count += 1
+                            ids_genre = select_sim_film(_genre)
+                            for _id in ids_genre:
+                                list_genres.add(select_genre_by_id(_id))
+                            name_genre = random.choice(list(list_genres))
+                            film = select_film_by_genre_name(name_genre)
+                            finally_genre_film = name_genre
 
-                    if _event.obj.text.lower() == 'мне этот подойдет':
-                        finally_genre_film = select_genre_by_name(finally_genre_film)
-                        insert_user_info(finally_genre_film, event.obj.from_id)
-                        if _event.from_user:
-                            vk.messages.send(
-                                user_id=_event.obj.from_id,
-                                random_id=get_random_id(),
-                                message=f'Отлично!',
-                                keyboard=encode_keyboard_for_vk(main_menu_keyboard), )
-                            break
+                            if _event.from_user:
+                                vk.messages.send(
+                                    user_id=_event.obj.from_id,
+                                    random_id=get_random_id(),
+                                    message=f'Название: {film.name}'
+                                            f'\nЖанр: {film.genre}'
+                                            f'\nРежиссёр: {film.directed}'
+                                            f'\nВ главной роли: {film.main_actor}'
+                                            f'\nСтрана: {film.country}'
+                                            f'\nГод: {film.year}'
+                                            f'\nОписание:\n{film.description}',
+                                    keyboard=encode_keyboard_for_vk(keyboard_for_choice_film),
+                                    attachment=load_photo(film, upload=upload))
 
-                    if _event.obj.text.lower() == 'вернуться в главное меню':
-                        if _event.from_user:
-                            vk.messages.send(
-                                user_id=_event.obj.from_id,
-                                random_id=get_random_id(),
-                                message=f'Хорошо',
-                                keyboard=encode_keyboard_for_vk(main_menu_keyboard), )
-                            break
+                        if _event.obj.text.lower() == 'мне этот подойдет':
+                            finally_genre_film = select_genre_by_name(finally_genre_film)
+                            insert_user_info(finally_genre_film, event.obj.from_id)
+                            if _event.from_user:
+                                vk.messages.send(
+                                    user_id=_event.obj.from_id,
+                                    random_id=get_random_id(),
+                                    message=f'Отлично!',
+                                    keyboard=encode_keyboard_for_vk(main_menu_keyboard), )
+                                break
+
+                        if _event.obj.text.lower() == 'вернуться в главное меню':
+                            if _event.from_user:
+                                vk.messages.send(
+                                    user_id=_event.obj.from_id,
+                                    random_id=get_random_id(),
+                                    message=f'Хорошо',
+                                    keyboard=encode_keyboard_for_vk(main_menu_keyboard), )
+                                break

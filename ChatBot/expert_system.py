@@ -147,7 +147,6 @@ def genre_calculate(answers):
         _action *= 1.9
         _scary *= 1.4
         _detective *= 1.7
-        _war *= 1.8
         _western *= 1.8
         _fantasy *= 1.8
         _fantastic *= 1.7
@@ -160,20 +159,58 @@ def genre_calculate(answers):
     else:
         'Некоректный ответ'
 
-    '''Комедия
-        Мультфильм
-        Триллер
-        Ужасы
-        Фантастика
-        Боевик
-        Вестерн
-        Военный
-        Детектив
-        Драма
-        Криминал
-        Мелодрама
-        Мюзикл
-        Фэнтези'''
+    # Ответ на седьмой вопрос
+    answers[6].replace(' ', '')
+    if answers[6].lower() == 'да':
+        _drama *= 1.5
+        _comedy *= 1.8
+        _cartoon *= 1.7
+    elif answers[6].lower() == 'нет':
+        _thriller *= 1.6
+        _scary *= 1.6
+        _crime *= 1.6
+    else:
+        'Некоректный ответ'
+
+    # Ответ на восьмой вопрос
+    answers[7].replace(' ', '')
+    if answers[7].lower() == 'да':
+        _action *= 1.7
+        _detective *= 1.5
+        _western *= 1.6
+        _drama *= 1.7
+    elif answers[7].lower() == 'нет':
+        _comedy *= 1.5
+        _melodrama *= 1.6
+        _cartoon *= 1.5
+        _music *= 1.3
+    else:
+        'Некоректный ответ'
+
+    # Ответ на девятый вопрос
+    answers[8].replace(' ', '')
+    if answers[8].lower() == 'да':
+        _cartoon *= 1.3
+        _fantasy *= 1.8
+        _fantastic *= 1.7
+    elif answers[8].lower() == 'нет':
+        _detective *= 1.6
+    else:
+        'Некоректный ответ'
+
+    # Ответ на десятый вопрос
+    answers[9].replace(' ', '')
+    if answers[9].lower() == 'да':
+        _comedy *= 1.8
+        _cartoon *= 1.3
+        _music *= 1.5
+    elif answers[9].lower() == 'нет':
+        _scary *= 1.6
+        _thriller *= 1.7
+        _war *= 1.4
+        _melodrama *= 1.5
+    else:
+        'Некоректный ответ'
 
     list_of_index = [_comedy, _cartoon, _thriller, _scary, _fantastic, _action,
                      _western, _war, _detective, _drama, _crime, _melodrama, _music, _fantasy]

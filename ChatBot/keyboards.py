@@ -86,10 +86,23 @@ keyboard_for_polls = {
     'one_time': False,
     'buttons': [
         [
-            get_button(label='Продолжить', color='primary'),
+            get_button(label='Начать!', color='primary'),
         ],
         [
             get_button(label='Вернуться в главное меню', color='primary')
+        ],
+    ]
+}
+
+# Клавиатура для ответов
+keyboard_for_answer = {
+    'one_time': False,
+    'buttons': [
+        [
+            get_button(label='Да', color='primary'),
+        ],
+        [
+            get_button(label='Нет', color='primary')
         ],
     ]
 }
